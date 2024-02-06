@@ -1,0 +1,25 @@
+diff --git a/node_modules/esbuild/lib/main.js b/node_modules/esbuild/lib/main.js
+index 4449440..374b794 100644
+--- a/node_modules/esbuild/lib/main.js
++++ b/node_modules/esbuild/lib/main.js
+@@ -32,7 +32,10 @@ var node_exports = {};
+ __export(node_exports, {
+   analyzeMetafile: () => analyzeMetafile,
+   analyzeMetafileSync: () => analyzeMetafileSync,
+-  build: () => build,
++  build: () => {
++    console.log('>>> ESBUILD: exporting build...', build)
++    return build
++  },
+   buildSync: () => buildSync,
+   context: () => context,
+   default: () => node_default,
+@@ -2433,3 +2436,8 @@ var node_default = node_exports;
+   transformSync,
+   version
+ });
++
++console.log('>>>> esbuild', {
++  'module.exports': module.exports,
++  node_exports: node_exports,
++});
